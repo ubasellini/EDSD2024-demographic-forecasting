@@ -2,7 +2,7 @@
 ## EDSD 2023-2024: Demographic Forecasting
 ## Lecture 1
 ## Direct extrapolation by (generalized) linear models
-## Date: 02/05/2023
+## Date: 04/03/2023
 ## Instructor: Ugofilippo Basellini
 ## -------------------------------------------------- ##
 
@@ -112,16 +112,4 @@ lines(tF,eta.hat,col=2,lwd=2)
 lines(tF,eta.hat.low,col=4,lwd=2,lty=2)
 lines(tF,eta.hat.up,col=4,lwd=2,lty=2)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+## END
