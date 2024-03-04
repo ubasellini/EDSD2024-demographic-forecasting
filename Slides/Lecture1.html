@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="Lecture1_files/libs/revealjs/dist/theme/quarto.css">
   <link href="Lecture1_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -348,20 +413,22 @@ Ugofilippo Basellini
 </section>
 <section id="presentations" class="slide level2">
 <h2>Presentations</h2>
-<!-- ::: incremental -->
 <ul>
 <li>A little bit about myself …</li>
-<li>… and a little bit about you <!-- ::: --></li>
+<li>… and a little bit about you</li>
 </ul>
+<!-- ::: incremental -->
+<!-- -   ... and a little bit about you -->
+<!-- ::: -->
 </section>
 <section id="miscellaneous" class="slide level2">
 <h2>Miscellaneous</h2>
 <!-- ::: incremental -->
 <ul>
 <li>Course materials available on Moodle and at <a href="https://github.com/ubasellini/EDSD2024-demographic-forecasting" class="uri">https://github.com/ubasellini/EDSD2024-demographic-forecasting</a></li>
-<li>Please ask questions during the class or email me at any time</li>
+<li>Please ask questions during the class or email me at any time (also after this week)</li>
 <li>Lectures consist of theoretical slides and small exercises in <code>R</code> to reproduce what we see</li>
-<li>On top of demographic forecasting, we will learn how to use animations to make nice dynamic visualizations, and how to use shiny apps <!-- :::  --></li>
+<li>On top of demographic forecasting, we will learn how to use animations to make nice dynamic visualizations, and how to use shiny apps <!-- ::: --></li>
 </ul>
 </section>
 <section id="assignment" class="slide level2">
@@ -372,7 +439,7 @@ Ugofilippo Basellini
 <li>Five exercises (out of nine), which will be given after each class</li>
 <li>The exercises follow up on what we have touched during the class</li>
 <li>Please email me a single .pdf file containing your answers, as well as the R codes and data to generate the results. Ideally you can send me an R markdown document</li>
-<li>Deadline: Sunday 7th April <!-- - Random group allocations: let's draw them in R --> <!-- :::  --></li>
+<li>Deadline: Sunday 7th April <!-- - Random group allocations: let's draw them in R --> <!-- ::: --></li>
 </ul>
 </section>
 <section id="course-overview" class="slide level2">
@@ -380,15 +447,18 @@ Ugofilippo Basellini
 <ul>
 <li>Lecture 1: direct extrapolation by (generalized) linear models</li>
 </ul>
-<!-- ::: {.fragment .semi-fade-out fragment-index=2} -->
+<div class="fragment semi-fade-out" data-fragment-index="2">
 <ul>
 <li>Lecture 2: direct extrapolation by time-series methods</li>
 <li>Lecture 3: parametric approaches</li>
-<li>Lecture 4: Lee-Carter method <!-- ::: --></li>
+<li>Lecture 4: Lee-Carter method</li>
 </ul>
+</div>
 </section>
-<section id="data" class="slide level2 smaller">
+<section id="data" class="slide level2">
 <h2>Data</h2>
+<div style="font-size: 90%;">
+<!-- ::: incremental -->
 <ul>
 <li>Let’s start by presenting the data we will use throughout this course</li>
 <li>In general, we will denote by:
@@ -402,6 +472,8 @@ Ugofilippo Basellini
 <li><span class="math inline">\(m_{x,t} = y_{x,t}/e_{x,t}\)</span>: age-specific mortality rates</li>
 </ul></li>
 </ul>
+</div>
+<!-- :::  -->
 </section>
 <section id="fertility" class="slide level2 smaller">
 <h2>Fertility</h2>
@@ -437,20 +509,23 @@ Ugofilippo Basellini
 </section>
 <section id="forecasting-by-direct-extrapolation" class="slide level2">
 <h2>Forecasting by direct extrapolation</h2>
+<!-- ::: incremental -->
 <ul>
-<li>One naive way of forecasting fertility or mortality is by <strong>direct extrapolation</strong></li>
+<li>One (naive) way of forecasting fertility or mortality is by <strong>direct extrapolation</strong></li>
 <li>Approach consists of fitting a model to the time-series of different age-specific measures independently</li>
-<li>First possible model: the linear model</li>
+<li>First possible model: the linear model<br>
+<!-- ::: --></li>
 </ul>
 </section>
 <section id="the-linear-model-recap" class="slide level2">
 <h2>The Linear Model (recap)</h2>
+<!-- ::: incremental -->
 <p><span class="math display">\[Y= \beta_{0} + \beta_{1} \,x_{1} + \beta_{2} \,x_{2} + \ldots + \beta_{p} \,x_{p} + \varepsilon\]</span></p>
 <p>Three main assumptions:</p>
 <ul>
 <li>the error term (stochastic part) <span class="math inline">\(\varepsilon\)</span> follows a normal distribution with expectation value <span class="math inline">\(0\)</span> and variance <span class="math inline">\(\sigma^{2}\)</span></li>
 <li>the <span class="math inline">\(Y\)</span> is linearly linked with the <span class="math inline">\(x_{1},\ldots, x_{p}\)</span> (systematic part)</li>
-<li>the variance <span class="math inline">\(\sigma^{2}\)</span> of <span class="math inline">\(Y\)</span> and <span class="math inline">\(\varepsilon\)</span>, respectively, does not depend on the covariates <span class="math inline">\(x_{1},\ldots, x_{p}\)</span></li>
+<li>the variance <span class="math inline">\(\sigma^{2}\)</span> of <span class="math inline">\(Y\)</span> and <span class="math inline">\(\varepsilon\)</span>, respectively, does not depend on the covariates <span class="math inline">\(x_{1},\ldots, x_{p}\)</span> <!-- ::: --></li>
 </ul>
 </section>
 <section id="the-linear-model-recap-1" class="slide level2">
@@ -460,10 +535,11 @@ Ugofilippo Basellini
 </section>
 <section id="forecasting-with-the-linear-model" class="slide level2">
 <h2>Forecasting with the linear model</h2>
-<p>Let us consider a vector of observed births (or deaths) <span class="math inline">\(y_{x,t}\)</span> at age <span class="math inline">\(x\)</span> and time <span class="math inline">\(t\)</span>.</p>
-<p>Then, one could fit a different linear model to the time-series of the age-specific births (deaths) as:</p>
-<p><span class="math display">\[y_{x,t} = \beta_{0} + \beta_{1} \,t \]</span></p>
-<p>for each age <span class="math inline">\(x\)</span> independently.</p>
+<!-- ::: incremental -->
+<ul>
+<li>Let us consider a vector of observed births (or deaths) <span class="math inline">\(y_{x,t}\)</span> at age <span class="math inline">\(x\)</span> and time <span class="math inline">\(t\)</span>.</li>
+<li>Then, one could fit a different linear model to the time-series of the age-specific births (deaths) as: <span class="math display">\[y_{x,t} = \beta_{0} + \beta_{1} \,t \]</span> for each age <span class="math inline">\(x\)</span> independently. <!-- ::: --></li>
+</ul>
 </section>
 <section id="exercise" class="slide level2">
 <h2>Exercise</h2>
@@ -473,7 +549,7 @@ Ugofilippo Basellini
 <p><strong>Exercise</strong></p>
 </div>
 <div class="callout-content">
-<p>Open your <code>R</code> session. Load the <code>FERT.SWE.Rdata</code> dataset, and consider only data from 1950 onward. Further, consider births that occurred at age 20, and fit a linear model to its time series. Extrapolate the time series up to 2050.</p>
+<p>Open your <code>R</code> session. Load the <code>FertSWE.Rdata</code> dataset, and consider only data from 1950 onward. Further, consider births that occurred at age 20, and fit a linear model to its time series. Extrapolate the time series up to 2050.</p>
 </div>
 </div>
 </div>
@@ -481,26 +557,24 @@ Ugofilippo Basellini
 </section>
 <section id="one-possible-solution" class="slide level2">
 <h2>One possible solution</h2>
-<!-- ``` r -->
-<!-- ### cleaning the workspace -->
-<!-- rm(list=ls()) -->
-<!-- ## loading packages  -->
-<!-- library(tidyverse) -->
-<!-- ## loading data -->
-<!-- load("data/FertSWE.Rdata") -->
-<!-- ## subset  -->
-<!-- my.df <- FERT.SWE %>% filter(Year>=1950, Age == 20) -->
-<!-- ## fit linear model -->
-<!-- lm1 <- lm(Births~Year,data=my.df) -->
-<!-- summary(lm1) -->
-<!-- ## extrapolate -->
-<!-- tF <- min(my.df$Year):2050 -->
-<!-- my.df.fore <- tibble(Year=c(tF)) -->
-<!-- btF <- predict(object=lm1, newdata=my.df.fore) -->
-<!-- ## plotting -->
-<!-- plot(my.df$Year,my.df$Births,ylim=range(my.df$Births,btF),xlim=range(tF)) -->
-<!-- lines(tF,btF,col=2,lwd=2); abline(h=0) -->
-<!-- ``` -->
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="do">### cleaning the workspace</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="do">## loading packages</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="do">## loading data</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">load</span>(<span class="st">"data/FertSWE.Rdata"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="do">## subset</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>my.df <span class="ot">&lt;-</span> FERT.SWE <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year<span class="sc">&gt;=</span><span class="dv">1950</span>, Age <span class="sc">==</span> <span class="dv">20</span>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="do">## fit linear model</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Births<span class="sc">~</span>Year,<span class="at">data=</span>my.df)</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="fu">summary</span>(lm1)</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="do">## extrapolate</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>tF <span class="ot">&lt;-</span> <span class="fu">min</span>(my.df<span class="sc">$</span>Year)<span class="sc">:</span><span class="dv">2050</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>my.df.fore <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">Year=</span><span class="fu">c</span>(tF))</span>
+<span id="cb1-15"><a href="#cb1-15"></a>btF <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="at">object=</span>lm1, <span class="at">newdata=</span>my.df.fore)</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="do">## plotting</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="fu">plot</span>(my.df<span class="sc">$</span>Year,my.df<span class="sc">$</span>Births,<span class="at">ylim=</span><span class="fu">range</span>(my.df<span class="sc">$</span>Births,btF),<span class="at">xlim=</span><span class="fu">range</span>(tF))</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="fu">lines</span>(tF,btF,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>); <span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="dangers-of-lm" class="slide level2">
 <h2>Dangers of LM</h2>
@@ -508,19 +582,24 @@ Ugofilippo Basellini
 <img data-src="Lecture1_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
 <section id="is-the-lm-an-appropriate-model" class="slide level2">
 <h2>Is the LM an appropriate model?</h2>
-<p>Using births or deaths (or even rates) in a LM is not a good idea:</p>
+<!-- ::: incremental -->
+<ul>
+<li>Using births or deaths (or even rates) in a LM is not a good idea:
 <ul>
 <li>bounded response variables</li>
 <li>improper statistical framework</li>
+</ul></li>
+<li>Births and deaths are a count process, therefore a Poisson distribution is much more suitable to model these processes. <!-- ::: --></li>
 </ul>
-<p>Births and deaths are a count process, therefore a Poisson distribution is much more suitable to model these processes.</p>
 <!-- If we _really_ want to use the LM, then log-rates could be used:  -->
 <!-- $$ \mathbb{E}[\ln(f_{x,t})] = \beta_{0} + \beta_{1} t $$ -->
 <!-- $$ \mathbb{E}[\ln(m_{x,t})] = \beta_{0} + \beta_{1} t $$ -->
 <!-- where each model is fitted to each age group $x$ independently -->
 </section>
-<section id="when-linear-model-cant-be-applied" class="slide level2 smaller">
+<section id="when-linear-model-cant-be-applied" class="slide level2">
 <h2>When Linear Model can’t be applied</h2>
+<div style="font-size: 75%;">
+<!-- ::: incremental -->
 <ul>
 <li>If we have <em>response</em> made of counts/proportion, linear models (constant variance, normal errors) are not a proper choice:
 <ul>
@@ -535,11 +614,13 @@ Ugofilippo Basellini
 <li>constant variances are not any longer assumed</li>
 <li>discrete or binary response variables are possible</li>
 </ul></li>
+<li><span class="math inline">\(\Rightarrow\)</span> we have the class of <em>Generalized Linear Models</em> (GLM) <!-- ::: --></li>
 </ul>
-<p><span class="math inline">\(\Rightarrow\)</span> we have the class of <em>Generalized Linear Models</em> (GLM)</p>
+</div>
 </section>
 <section id="the-linear-model-as-a-glm" class="slide level2">
 <h2>The Linear Model as a GLM</h2>
+<!-- ::: incremental -->
 <span class="math display">\[\begin{gather*}
 \mathbb{E}(y_i) = \mu_i\\
 \mu_i = \beta_0 + \beta_1 x_{i,1} + \beta_2 x_{i,2} + \ldots + \beta_p x_{i,p}
@@ -548,32 +629,31 @@ Ugofilippo Basellini
 <ul>
 <li><code>random component</code>: <span class="math inline">\(\; Y_{i} \sim \mathcal{N}(\mu_{i}, \sigma^2)\)</span></li>
 <li><code>systematic component</code>: the predictors <span class="math inline">\(x_1, \ldots, x_p\)</span> produce the <em>linear predictor</em> <span class="math inline">\(\eta_i = \beta_0 + \sum_{j=1}^p \beta_j x_{i,j}\)</span></li>
-<li><code>link function</code>: a function connecting random and systematic components <span class="math inline">\(\eta_i = g (\mu_i) = \mu_i\)</span></li>
+<li><code>link function</code>: a function connecting random and systematic components <span class="math inline">\(\eta_i = g (\mu_i) = \mu_i\)</span> <!-- ::: --></li>
 </ul>
 <!-- In this case, $\eta_i = \mu_i \quad$ (i.e., $g(.)$ is the identity function) -->
 </section>
 <section id="components-of-glms" class="slide level2">
 <h2>Components of GLMs</h2>
+<!-- ::: incremental -->
 <ul>
 <li><code>random component</code>: <span class="math inline">\(\; y_{i}\)</span> is the realization of a random variable following a specific Exponential Family distribution with mean <span class="math inline">\(\mu_i\)</span></li>
 <li><code>systematic component</code>: the predictors <span class="math inline">\(x_1, \ldots, x_p\)</span> produce the <em>linear predictor</em> <span class="math inline">\(\eta_i = \beta_0 + \sum_{j=1}^p \beta_j x_{i,j}\)</span></li>
-<li><code>link function</code>: it is a monotonic differentiable function connecting the mean and linear predictor</li>
+<li><code>link function</code>: it is a monotonic differentiable function connecting the mean and linear predictor <span class="math display">\[\eta_i = g (\mu_i) \qquad \mathbb{E}(Y_i) = \mu_i = g^{-1} (\eta_i)\]</span> <!-- ::: --></li>
 </ul>
-<p><span class="math display">\[\eta_i = g (\mu_i) \qquad \mathbb{E}(Y_i) = \mu_i = g^{-1} (\eta_i)\]</span></p>
 </section>
 <section id="the-poisson-distribution" class="slide level2">
 <h2>The Poisson distribution</h2>
+<!-- ::: incremental -->
 <ul>
-<li>A random variable <span class="math inline">\(Y\)</span> is said to have a Poisson distribution with parameter <span class="math inline">\(\mu\)</span> if it takes integer values <span class="math inline">\(y = 0, 1, 2, \ldots\)</span> with probability</li>
-</ul>
-<p><span class="math display">\[
+<li><p>A random variable <span class="math inline">\(Y\)</span> is said to have a Poisson distribution with parameter <span class="math inline">\(\mu\)</span> if it takes integer values <span class="math inline">\(y = 0, 1, 2, \ldots\)</span> with probability <span class="math display">\[
 \Pr[Y = y] = \frac{e^{-y} \mu^{y}}{y!} \qquad \mbox{with} \quad \mu&gt;0
-\]</span></p>
-<ul>
-<li>Mean and Variance are equal (heteroscedasticity): <span class="math display">\[
+\]</span></p></li>
+<li><p>Mean and Variance are equal (heteroscedasticity): <span class="math display">\[
   \mathbb{E}(Y) = \mathbb{V}ar(Y) = \mu
-  \]</span></li>
+  \]</span></p></li>
 </ul>
+<!-- ::: -->
 <!-- ## The log-linear regression model   -->
 <!-- ::: {.hidden} -->
 <!-- $$ -->
@@ -595,6 +675,7 @@ Ugofilippo Basellini
 </section>
 <section id="the-log-linear-regression-model" class="slide level2">
 <h2>The Log-Linear regression model</h2>
+<!-- ::: incremental -->
 <span class="math display">\[\begin{gather*}
 \mathbb{E}(Y_i) = \mu_i\\
 \eta_i = \ln \left(\frac{\mu_{i}}{e_i} \right) = \beta_0 + \beta_1 x_{i,1} + \beta_2 x_{i,2} + \ldots + \beta_p x_{i,p}
@@ -605,19 +686,21 @@ Ugofilippo Basellini
 <li><code>systematic component</code>: the predictors <span class="math inline">\(x_1, \ldots, x_p\)</span> produce the <em>linear predictor</em> <span class="math inline">\(\eta_i = \beta_0 + \sum_{j=1}^p \beta_j x_{i,j}\)</span></li>
 <li><code>link function</code>: a function connecting random and systematic components <span class="math inline">\(\eta_i = g (\mu_i) = \ln(\mu_{i} / e_i)\)</span></li>
 </ul>
+<!-- :::  -->
 <div class="footer">
 
 </div>
 </section>
-<section id="exercise-1" class="slide level2 smaller">
+<section id="exercise-1" class="slide level2">
 <h2>Exercise</h2>
+<div style="font-size: 80%;">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>Exercise</strong></p>
 </div>
 <div class="callout-content">
-<p>Consider again the subset of data for women aged 20. Fit two models :</p>
+<p>Consider again the subset of data for women aged 20 (starting from year 1950). Fit two models :</p>
 <ul>
 <li>a linear model for fertility rates</li>
 <li>a generalized linear model for births with Poisson distribution and exposures as an offset</li>
@@ -631,36 +714,38 @@ Ugofilippo Basellini
 <li><p>for the GLM model, use the <code>glm</code> command, specifying both family (Poisson) and offset using <code>glm(.~.,data=.,offset = log(.),family=poisson())</code></p></li>
 <li><p>to forecast with the GLM model, use the estimated coefficients</p></li>
 </ol>
+</div>
 </section>
 <section id="one-possible-solution-1" class="slide level2">
 <h2>One possible solution</h2>
-<!-- ``` r -->
-<!-- ## fit linear model to rates -->
-<!-- lm2 <- lm(Rates~Year,data=my.df) -->
-<!-- ## fit Poisson glm to births -->
-<!-- glm1 <- glm(Births~Year,data=my.df,offset = log(Exposures),family=poisson()) -->
-<!-- summary(glm1) -->
-<!-- ## linear predictors -->
-<!-- fF.LM <- predict(object=lm2, newdata=my.df.fore) -->
-<!-- fF.GLM <- exp(coef(glm1)[1]+coef(glm1)[2]*tF) -->
-<!-- ## plotting -->
-<!-- plot(my.df$Year,my.df$Rates,ylim=range(my.df$Rates,fF.LM,fF.GLM),xlim=range(tF)) -->
-<!-- lines(tF,fF.LM,col=2,lwd=2); abline(h=0) -->
-<!-- lines(tF,fF.GLM,col=4,lwd=2) -->
-<!-- ``` -->
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="do">## fit linear model to rates</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Rates<span class="sc">~</span>Year,<span class="at">data=</span>my.df)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="do">## fit Poisson glm to births</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>glm1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(Births<span class="sc">~</span>Year,<span class="at">data=</span>my.df,<span class="at">offset =</span> <span class="fu">log</span>(Exposures),<span class="at">family=</span><span class="fu">poisson</span>())</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">summary</span>(glm1)</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="do">## linear predictors</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>fF.LM <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="at">object=</span>lm2, <span class="at">newdata=</span>my.df.fore)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>fF.GLM <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(glm1)[<span class="dv">1</span>]<span class="sc">+</span><span class="fu">coef</span>(glm1)[<span class="dv">2</span>]<span class="sc">*</span>tF)</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="do">## plotting</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="fu">plot</span>(my.df<span class="sc">$</span>Year,my.df<span class="sc">$</span>Rates,<span class="at">ylim=</span><span class="fu">range</span>(my.df<span class="sc">$</span>Rates,fF.LM,fF.GLM),<span class="at">xlim=</span><span class="fu">range</span>(tF))</span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="fu">lines</span>(tF,fF.LM,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>); <span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="fu">lines</span>(tF,fF.GLM,<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="fertility-example" class="slide level2">
 <h2>Fertility example</h2>
 
 <img data-src="Lecture1_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
-<section id="forecasting-with-generalized-linear-models" class="slide level2">
-<h2>Forecasting with (generalized) linear models</h2>
-<p>Some issues:</p>
+<section id="forecasting-with-glms" class="slide level2">
+<h2>Forecasting with (G)LMs</h2>
+<!-- ::: incremental -->
+<ul>
+<li>Some issues:
 <ul>
 <li>rather bad goodness-of-fit</li>
-<li>very large jump-off bias</li>
+<li>very large jump-off bias (error in the last year of the fitting period)</li>
+</ul></li>
+<li>What about the age-specific shape of fertility? <!-- :::  --></li>
 </ul>
-<p>What about the age-specific shape of fertility?</p>
 </section>
 <section id="fertility-example-1" class="slide level2">
 <h2>Fertility example</h2>
@@ -670,15 +755,31 @@ Ugofilippo Basellini
 <h2>Fertility example</h2>
 
 <img data-src="Lecture1_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
-<section id="forecasting-with-generalized-linear-models-1" class="slide level2">
-<h2>Forecasting with (generalized) linear models</h2>
+<section id="forecasting-with-glms-1" class="slide level2">
+<h2>Forecasting with (G)LMs</h2>
+<!-- ::: incremental -->
 <ul>
 <li>clearly not a very reasonable age-pattern of fertility</li>
-<li>what about the uncertainty in our forecasts?</li>
+<li>what about the Total Fertility Rate? <span class="math display">\[ \mathrm{TFR}_t = \sum_x f_{x,t} \]</span></li>
+</ul>
+<!-- - what about the uncertainty in our forecasts? -->
+<!-- :::  -->
+</section>
+<section id="fertility-example-3" class="slide level2">
+<h2>Fertility example</h2>
+
+<img data-src="Lecture1_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="forecasting-with-glms-2" class="slide level2">
+<h2>Forecasting with (G)LMs</h2>
+<!-- ::: incremental -->
+<ul>
+<li>jump-off bias &amp; “badness-of-fit” really evident</li>
+<li>what about the uncertainty in our forecasts? <!-- :::  --></li>
 </ul>
 </section>
 <section id="glm-uncertainty" class="slide level2 smaller">
 <h2>GLM: uncertainty</h2>
+<!-- ::: incremental -->
 <!-- ::: {.hidden} -->
 <!-- $$ -->
 <!--  \def\bV{{\bf V}} -->
@@ -689,54 +790,47 @@ Ugofilippo Basellini
 <ul>
 <li><span class="math inline">\(\hat{\beta}_{k}\)</span>: <span class="math inline">\(\; se(\hat{\beta}_{k}) = \sqrt{ \boldsymbol{V}_{kk}}\)</span></li>
 <li>linear combination of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>, i.e.&nbsp;<span class="math inline">\(\, \breve{\boldsymbol{y}} = \breve{\boldsymbol{X}}\hat{\boldsymbol{\beta}}\)</span>: <span class="math display">\[se(\breve{\boldsymbol{y}}) = \sqrt{ \mathrm{diag}(\breve{\boldsymbol{X}}' \boldsymbol{V} \breve{\boldsymbol{X}})}\]</span></li>
-<li>a non-linear combination of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> (<em>delta method</em>), i.e.&nbsp;<span class="math inline">\(\, \breve{\boldsymbol{y}} = g(\hat{\boldsymbol{\beta}})\)</span>: <span class="math display">\[ se(\breve{\boldsymbol{y}}) = \sqrt{ \mathrm{diag}(\boldsymbol{G}' \boldsymbol{V} \boldsymbol{G})}\]</span> where <span class="math inline">\(\boldsymbol{G} = \frac{\partial g(\hat{\boldsymbol{\beta}})}{\partial\boldsymbol{\beta}}\)</span></li>
+<li>a non-linear combination of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> (<em>delta method</em>), i.e.&nbsp;<span class="math inline">\(\, \breve{\boldsymbol{y}} = g(\hat{\boldsymbol{\beta}})\)</span>: <span class="math display">\[ se(\breve{\boldsymbol{y}}) = \sqrt{ \mathrm{diag}(\boldsymbol{G}' \boldsymbol{V} \boldsymbol{G})}\]</span> where <span class="math inline">\(\boldsymbol{G} = \frac{\partial g(\hat{\boldsymbol{\beta}})}{\partial\boldsymbol{\beta}}\)</span> <!-- :::  --></li>
 </ul>
 </section>
 <section id="computing-cis-for-glms" class="slide level2">
 <h2>Computing CIs for GLMs</h2>
-<!-- ``` r -->
-<!-- ## linear combination of betas -->
-<!-- X <- cbind(1,tF) -->
-<!-- eta.hat <- X%*%coef(glm1) -->
-<!-- ## var-covar matrix -->
-<!-- V <- vcov(glm1) -->
-<!-- ## computing standard errors -->
-<!-- se.eta <- sqrt(diag(X%*%V%*%t(X))) -->
-<!-- ## upper and lower 95% CI -->
-<!-- eta.hat.low <- eta.hat - 2*se.eta -->
-<!-- eta.hat.up <- eta.hat + 2*se.eta -->
-<!-- ## plotting -->
-<!-- plot(my.df$Year,my.df$logRates,ylim=range(my.df$logRates, -->
-<!--   eta.hat.low,eta.hat.up),xlim=range(tF)) -->
-<!-- lines(tF,eta.hat,col=2,lwd=2) -->
-<!-- lines(tF,eta.hat.low,col=4,lwd=2,lty=2) -->
-<!-- lines(tF,eta.hat.up,col=4,lwd=2,lty=2) -->
-<!-- ``` -->
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="do">## linear combination of betas</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>,tF)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>eta.hat <span class="ot">&lt;-</span> X<span class="sc">%*%</span><span class="fu">coef</span>(glm1)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="do">## var-covar matrix</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>V <span class="ot">&lt;-</span> <span class="fu">vcov</span>(glm1)</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="do">## computing standard errors</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>se.eta <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">diag</span>(X<span class="sc">%*%</span>V<span class="sc">%*%</span><span class="fu">t</span>(X)))</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="do">## upper and lower 95% CI</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>eta.hat.low <span class="ot">&lt;-</span> eta.hat <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>se.eta</span>
+<span id="cb3-10"><a href="#cb3-10"></a>eta.hat.up <span class="ot">&lt;-</span> eta.hat <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>se.eta</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="do">## plotting</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="fu">plot</span>(my.df<span class="sc">$</span>Year,my.df<span class="sc">$</span>logRates,<span class="at">ylim=</span><span class="fu">range</span>(my.df<span class="sc">$</span>logRates,</span>
+<span id="cb3-13"><a href="#cb3-13"></a>  eta.hat.low,eta.hat.up),<span class="at">xlim=</span><span class="fu">range</span>(tF))</span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="fu">lines</span>(tF,eta.hat,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="fu">lines</span>(tF,eta.hat.low,<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="fu">lines</span>(tF,eta.hat.up,<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="cis-for-one-glm" class="slide level2">
 <h2>CIs for one GLM</h2>
 
-<img data-src="Lecture1_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
-<section id="summary-measures" class="slide level2">
-<h2>Summary measures</h2>
-<ul>
-<li>what about the Total Fertility Rate?</li>
-</ul>
-<p><span class="math display">\[ \mathrm{TFR}_t = \sum_x f_{x,t} \]</span></p>
-</section>
-<section id="fertility-example-3" class="slide level2">
-<h2>Fertility example</h2>
-
+<!-- ## Summary measures -->
+<!-- - what about the Total Fertility Rate? -->
+<!-- $$ \mathrm{TFR}_t = \sum_x f_{x,t} $$ -->
 <img data-src="Lecture1_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
-<section id="summary-measures-1" class="slide level2">
-<h2>Summary measures</h2>
+<section id="forecasting-with-glms-3" class="slide level2">
+<h2>Forecasting with (G)LMs</h2>
+<!-- ::: incremental -->
 <ul>
 <li>jump-off bias &amp; “badness-of-fit” really evident</li>
-<li>very hard to incorporate uncertainty coming from <span class="math inline">\(m\)</span> different models <span class="math inline">\(\Rightarrow\)</span> would be preferable to work within a single model framework (see Lectures 3 and 4)</li>
+<li>tiny uncertainty for one model</li>
+<li>very hard to incorporate uncertainty coming from <span class="math inline">\(m\)</span> different models <span class="math inline">\(\Rightarrow\)</span> would be preferable to work within a single model framework (see Lectures 3 and 4) <!-- ::: --></li>
 </ul>
 </section>
-<section id="day-1-assignment" class="slide level2 smaller">
+<section id="day-1-assignment" class="slide level2">
 <h2>Day 1 assignment</h2>
+<div style="font-size: 85%;">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -758,9 +852,9 @@ Ugofilippo Basellini
 </div>
 </div>
 </div>
-<div class="footer">
-
 </div>
+<!-- ::: footer -->
+<!-- ::: -->
 <!-- END -->
 <!-- <https://quarto.org/docs/presentations/>. -->
 
