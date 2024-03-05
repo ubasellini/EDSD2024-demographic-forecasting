@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="Lecture2_files/libs/revealjs/dist/theme/quarto.css">
   <link href="Lecture2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -363,8 +428,9 @@ Ugofilippo Basellini
 </ul>
 </div>
 </section>
-<section id="time-series-analysis-intro" class="slide level2 smaller">
+<section id="time-series-analysis-intro" class="slide level2">
 <h2>Time-series analysis: intro</h2>
+<div style="font-size: 75%;">
 <!-- ::: incremental -->
 <ul>
 <li>A <em>time-series</em> is a collection of observations made sequentially through time. Let us focus on discrete time series recorded at equal intervals of time</li>
@@ -375,8 +441,9 @@ Ugofilippo Basellini
 <li><em>Univariate methods</em> : forecasts depend on present and past values of a single series</li>
 <li><em>Multivariate methods</em> : forecasts depend, at least partly, on values of one or more additional variables (predictors)</li>
 </ul></li>
+<li><span class="math inline">\(\Rightarrow\)</span> here univariate time-series methods <!-- ::: --></li>
 </ul>
-<p><span class="math inline">\(\Rightarrow\)</span> here univariate time-series methods <!-- ::: --></p>
+</div>
 </section>
 <section id="descriptive-techniques" class="slide level2">
 <h2>Descriptive techniques</h2>
@@ -388,28 +455,31 @@ Ugofilippo Basellini
 </li>
 <li>These variations are typically removed before time-series modelling via differencing <span class="math inline">\(\Rightarrow\)</span> helps to stabilize the <strong>mean</strong><br>
 </li>
-<li>The time plot may also help to decide whether a variable needs to be transformed <span class="math inline">\(\Rightarrow\)</span> helps to stabilize the <strong>variance</strong> (e.g.&nbsp;log-transformation) <!-- :::  --></li>
+<li>The time plot may also help to decide whether a variable needs to be transformed <span class="math inline">\(\Rightarrow\)</span> helps to stabilize the <strong>variance</strong> (e.g.&nbsp;log-transformation) <!-- ::: --></li>
 </ul>
 </section>
 <section id="stationary-stochastic-processes" class="slide level2 smaller">
 <h2>Stationary stochastic processes</h2>
+<!-- ::: {.fragment fragment-index=1} -->
 <ul>
 <li>A <em>stochastic</em> time series is one where future values can only partly be determined by past values</li>
-<li>A process is defined stationary_ if its properties do not change through time</li>
-<li>More formally, let <span class="math inline">\(y_t\)</span> be the realization of the underlying random variable <span class="math inline">\(Y_t\)</span>, and the observed time-series <span class="math inline">\(\boldsymbol{y}=\left[y_1, y_2, \dots, y_T \right]\)</span> be a realization of the stochastic process</li>
+<li>A process is defined <em>stationary</em> if its properties do not change through time <!-- :::  --> <!-- ::: {.fragment fragment-index=2} --></li>
+<li>More formally, let <span class="math inline">\(y_t\)</span> be the realization of the underlying random variable <span class="math inline">\(Y_t\)</span>, and the observed time-series <span class="math inline">\(\boldsymbol{y}=\left[y_1, y_2, \dots, y_T \right]\)</span> be a realization of the stochastic process <!-- :::  --> <!-- ::: {.fragment fragment-index=3} --></li>
 <li>A stochastic process is second-order stationary if its first and second moments are finite and do not change over time, i.e.:</li>
 </ul>
 <span class="math display">\[\begin{align*}
 \mathbb{E}\left[Y_t\right] &amp;= \mu  \\
 \mathrm{COV}\left[Y_t, Y_{t+k}\right] &amp;= \mathbb{E}\left[\left(Y_t - \mu\right) \left( Y_{t+k} - \mu\right)\right] = \gamma_k
 \end{align*}\]</span>
-<p>for all <span class="math inline">\(t\)</span> and for <span class="math inline">\(k=0,1,2,\dots\)</span> (note, for <span class="math inline">\(k=0\)</span>, <span class="math inline">\(\gamma_0 = \sigma^2\)</span>)</p>
-<ul>
-<li>In simpler words, a stationary series has constant mean, constant variance and no predictable patterns in the long-term</li>
-</ul>
+<p>for all <span class="math inline">\(t\)</span> and for <span class="math inline">\(k=0,1,2,\dots\)</span> (note, for <span class="math inline">\(k=0\)</span>, <span class="math inline">\(\gamma_0 = \sigma^2\)</span>) <!-- :::  --> <!-- ::: {.fragment fragment-index=4} --> - In simpler words, a stationary series has constant mean, constant variance and no predictable patterns in the long-term <!-- ::: --></p>
+<div class="footer">
+
+</div>
 </section>
-<section id="the-acf" class="slide level2 smaller">
+<section id="the-acf" class="slide level2">
 <h2>The ACF</h2>
+<div style="font-size: 85%;">
+<!-- ::: incremental -->
 <ul>
 <li>The set of coefficients <span class="math inline">\(\gamma_k\)</span> constitutes the autocovariance function, which is standardized to give the the autocorrelation function (ACF) <span class="math inline">\(\; \rho_k = \gamma_k / \gamma_0\)</span></li>
 <li>The sample autocovariance coefficient at lag <span class="math inline">\(k\)</span> is given by<br>
@@ -417,11 +487,13 @@ Ugofilippo Basellini
   c_k = \sum_{t=1}^{T-k} \left(y_t - \bar{y}\right) \left(y_{t+k} - \bar{y}\right) / T
 \]</span> for <span class="math inline">\(k=0,1,2,\dots\)</span>,</li>
 <li>The sample autocorrelation coefficient at lag <span class="math inline">\(k\)</span> is computed as <span class="math inline">\(r_k=c_k/c_0\)</span></li>
-<li><span class="math inline">\(r_k\)</span> is an estimate of the theoretical <span class="math inline">\(\rho_k\)</span></li>
+<li><span class="math inline">\(r_k\)</span> is an estimate of the theoretical <span class="math inline">\(\rho_k\)</span> <!-- ::: --></li>
 </ul>
+</div>
 </section>
 <section id="the-correlogram-partial-acf" class="slide level2">
 <h2>The correlogram &amp; partial ACF</h2>
+<!-- ::: incremental -->
 <ul>
 <li>The <strong>correlogram</strong> is the graph of <span class="math inline">\(r_k\)</span> against <span class="math inline">\(k\)</span></li>
 <li>Plotting the correlogram is very useful:
@@ -430,7 +502,7 @@ Ugofilippo Basellini
 <li>the ACF of stationary data drops to zero relatively quickly</li>
 <li>useful to identify orders of AR(<span class="math inline">\(p\)</span>) and MA(<span class="math inline">\(q\)</span>) models</li>
 </ul></li>
-<li>The <strong>partial</strong> ACF (PACF) measures the excess correlation at lag <span class="math inline">\(k\)</span> which has not already been accounted for by autocorrelations at lower lags</li>
+<li>The <strong>partial</strong> ACF (PACF) measures the excess correlation at lag <span class="math inline">\(k\)</span> which has not already been accounted for by autocorrelations at lower lags <!-- :::  --></li>
 </ul>
 </section>
 <section id="non-stationary-ts-an-example" class="slide level2 smaller">
@@ -443,6 +515,7 @@ Ugofilippo Basellini
 </section>
 <section id="differencing" class="slide level2 smaller">
 <h2>Differencing</h2>
+<!-- ::: incremental -->
 <ul>
 <li>Powerful tool to stabilize the mean and obtain stationary time-series
 <ul>
@@ -454,7 +527,7 @@ Ugofilippo Basellini
 <li>In addition to correlogram, two main tests for determining the required order of differencing:
 <ul>
 <li>Augmented Dickey Fuller test: <span class="math inline">\(H_0\)</span> data are non-stationary and non-seasonal</li>
-<li>Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test : <span class="math inline">\(H_0\)</span> data are stationary and non-seasonal</li>
+<li>Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test : <span class="math inline">\(H_0\)</span> data are stationary and non-seasonal <!-- ::: --></li>
 </ul></li>
 </ul>
 </section>
@@ -468,6 +541,7 @@ Ugofilippo Basellini
 </section>
 <section id="purely-random-process-white-noise" class="slide level2">
 <h2>Purely random process (white noise)</h2>
+<!-- ::: incremental -->
 <ul>
 <li>A sequence of uncorrelated, identically distributed random variables <span class="math inline">\(Z_t\)</span> with zero mean and constant variance <span class="math inline">\(\sigma^2_z\)</span></li>
 <li>A stationary process with ACF equal to: <span class="math display">\[
@@ -476,7 +550,7 @@ Ugofilippo Basellini
       0  &amp;k\neq0
   \end{array} \right.
 \]</span></li>
-<li>Often used to model the random disturbances in more complicated processes</li>
+<li>Often used to model the random disturbances in more complicated processes <!-- :::  --></li>
 </ul>
 </section>
 <section id="purely-random-process-an-example" class="slide level2 smaller">
@@ -489,19 +563,16 @@ Ugofilippo Basellini
 </section>
 <section id="random-walk-model" class="slide level2 smaller">
 <h2>Random walk model</h2>
+<!-- ::: incremental -->
 <ul>
-<li>Random walk models are widely used for non-stationary data (e.g.~economic and financial data):</li>
-</ul>
-<p><span class="math display">\[ Y_t = Y_{t-1} + Z_t \]</span></p>
-<p>where <span class="math inline">\(Z_t\)</span> is a purely random process</p>
-<ul>
+<li><p>Random walk models are widely used for non-stationary data (e.g.~economic and financial data): <span class="math display">\[ Y_t = Y_{t-1} + Z_t \]</span> where <span class="math inline">\(Z_t\)</span> is a purely random process</p></li>
 <li><p>Random walk is non-stationary (variance increases through time), but first-order differences (purely random process) is stationary</p></li>
 <li><p>Typical features:</p>
 <ul>
 <li>sudden and unpredictable changes of direction</li>
 <li>long periods of apparent trends up/down</li>
 </ul></li>
-<li><p>Forecasts for the random walk model are simply given by the value of the last observation (i.e.~naïve forecast): <span class="math inline">\(\, \hat{y}_{T+h|T} = y_T\)</span></p></li>
+<li><p>Forecasts for the random walk model are simply given by the value of the last observation (i.e.~naïve forecast): <span class="math inline">\(\, \hat{y}_{T+h|T} = y_T\)</span> <!-- :::  --></p></li>
 </ul>
 </section>
 <section id="random-walk-process-an-example" class="slide level2 smaller">
@@ -514,10 +585,11 @@ Ugofilippo Basellini
 </section>
 <section id="random-walk-with-drift-model" class="slide level2 smaller">
 <h2>Random walk with drift model</h2>
+<!-- ::: incremental -->
 <ul>
-<li><p>A closely related model that allows first differences to have non-zero mean is the <strong>random walk with drift</strong> (RWD): <span class="math display">\[ Y_t = c + Y_{t-1} + Z_t \]</span> where <span class="math inline">\(Z_t\)</span> is a purely random process, and <span class="math inline">\(c\)</span> is a constant. If <span class="math inline">\(c&gt;0\)</span> (<span class="math inline">\(c&lt;0\)</span>), <span class="math inline">\(y_t\)</span> will tend to drift upwards (downwards)</p></li>
+<li><p>A closely related model that allows first differences to have non-zero mean is the <strong>random walk with drift</strong> (RWD): <span class="math display">\[Y_t = c + Y_{t-1} + Z_t\]</span> where <span class="math inline">\(Z_t\)</span> is a purely random process, and <span class="math inline">\(c\)</span> is a constant. If <span class="math inline">\(c&gt;0\)</span> (<span class="math inline">\(c&lt;0\)</span>), <span class="math inline">\(y_t\)</span> will tend to drift upwards (downwards)</p></li>
 <li><p>The estimate of the drift <span class="math inline">\(c\)</span> is given by the average of the changes between consecutive observations: <span class="math display">\[ c= \frac{1}{T-1}\sum_{t=2}^{T}\left(y_t - y_{t-1}\right) = \frac{y_T - y_1}{T-1} \]</span></p></li>
-<li><p>Forecasts for the random walk model with drift are given by <span class="math inline">\(\,\hat{y}_{T+h|T} = y_T + c\,h\)</span> <span class="math inline">\(\, \Rightarrow\)</span> equivalent to drawing a line between the first and last observations, and extrapolating it into the future</p></li>
+<li><p>Forecasts for the random walk model with drift are given by <span class="math inline">\(\,\hat{y}_{T+h|T} = y_T + c\,h\)</span> <span class="math inline">\(\, \Rightarrow\)</span> equivalent to drawing a line between the first and last observations, and extrapolating it into the future <!-- :::  --></p></li>
 </ul>
 </section>
 <section id="rwd-process-an-example" class="slide level2 smaller">
@@ -554,56 +626,54 @@ Ugofilippo Basellini
 </section>
 <section id="one-possible-solution" class="slide level2 smaller">
 <h2>One possible solution</h2>
-<!-- ``` r -->
-<!-- ## cleaning the workspace -->
-<!-- rm(list=ls(all=TRUE)) -->
-<!-- ## packages -->
-<!-- library(tidyverse) -->
-<!-- library(forecast) -->
-<!-- ## loading the data -->
-<!-- setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) -->
-<!-- load("data/TimeSeries.Rdata") -->
-<!-- ## subset the data -->
-<!-- my.df <- sp500.data %>% filter(Date>="1990-01-01") -->
-<!-- ## extract -->
-<!-- y.all <- my.df %>% select(SP500) %>% slice(1:250) %>% pull() -->
-<!-- t.all <- my.df %>% select(Date) %>% slice(1:250) %>% pull() -->
-<!-- y <- my.df %>% select(SP500) %>% slice(1:200) %>% pull() -->
-<!-- t <- my.df %>% select(Date) %>% slice(1:200) %>% pull() -->
-<!-- n <- length(y); n.all <- length(y.all) -->
-<!-- tF <- t.all[!t.all%in%t] -->
-<!-- nF <- h <- length(tF) -->
-<!-- ## plotting -->
-<!-- par(mfrow=c(1,2)) -->
-<!-- plot(t,y,t="l");acf(y) -->
-<!-- par(mfrow=c(1,1)) -->
-<!-- ## differencing y -->
-<!-- y.diff <- diff(y) -->
-<!-- ## plotting -->
-<!-- par(mfrow=c(1,2)) -->
-<!-- plot(t[-1],y.diff,t="l");acf(y.diff) -->
-<!-- par(mfrow=c(1,1)) -->
-<!-- ## modelling (two RW models) -->
-<!-- mod1 <- Arima(y,order=c(0,1,0),include.drift = F) -->
-<!-- mod2 <- Arima(y,order=c(0,1,0),include.drift = T) -->
-<!-- ## checking the drift estimate -->
-<!-- mod2;(y[n]-y[1])/(n-1) -->
-<!-- ## forecast -->
-<!-- y.fore1 <- forecast(mod1,h=h) -->
-<!-- y.fore2 <- forecast(mod2,h=h) -->
-<!-- ## plotting -->
-<!-- plot(t,y,t="l",xlim=range(t.all),ylim=range(y,y.fore2$lower[,1]),lwd=2) -->
-<!-- abline(v=t[n],lty=2) -->
-<!-- points(tF,y.all[t.all%in%tF],cex=0.8) -->
-<!-- ## adding forecasts (80%PI and median) -->
-<!-- lines(tF,y.fore1$upper[,1],col=2,lwd=2,lty=2) -->
-<!-- lines(tF,y.fore1$lower[,1],col=2,lwd=2,lty=2) -->
-<!-- lines(tF,y.fore2$upper[,1],col=4,lwd=2,lty=2) -->
-<!-- lines(tF,y.fore2$lower[,1],col=4,lwd=2,lty=2) -->
-<!-- lines(tF,y.fore1$mean,col=2,lwd=2) -->
-<!-- lines(tF,y.fore2$mean,col=4,lwd=2) -->
-<!-- legend("bottomleft",c("RW","RW w drift"),col=c(2,4),lwd=2,title = "Forecast:") -->
-<!-- ``` -->
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="do">## cleaning the workspace</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>(<span class="at">all=</span><span class="cn">TRUE</span>))</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="do">## packages</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(forecast)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="do">## loading the data</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">setwd</span>(<span class="fu">dirname</span>(rstudioapi<span class="sc">::</span><span class="fu">getActiveDocumentContext</span>()<span class="sc">$</span>path))</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">load</span>(<span class="st">"data/TimeSeries.Rdata"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="do">## subset the data</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>my.df <span class="ot">&lt;-</span> sp500.data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Date<span class="sc">&gt;=</span><span class="st">"1990-01-01"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="do">## extract</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>y.all <span class="ot">&lt;-</span> my.df <span class="sc">%&gt;%</span> <span class="fu">select</span>(SP500) <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">250</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>()</span>
+<span id="cb1-13"><a href="#cb1-13"></a>t.all <span class="ot">&lt;-</span> my.df <span class="sc">%&gt;%</span> <span class="fu">select</span>(Date) <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">250</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>()</span>
+<span id="cb1-14"><a href="#cb1-14"></a>y <span class="ot">&lt;-</span> my.df <span class="sc">%&gt;%</span> <span class="fu">select</span>(SP500) <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>()</span>
+<span id="cb1-15"><a href="#cb1-15"></a>t <span class="ot">&lt;-</span> my.df <span class="sc">%&gt;%</span> <span class="fu">select</span>(Date) <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>()</span>
+<span id="cb1-16"><a href="#cb1-16"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); n.all <span class="ot">&lt;-</span> <span class="fu">length</span>(y.all)</span>
+<span id="cb1-17"><a href="#cb1-17"></a>tF <span class="ot">&lt;-</span> t.all[<span class="sc">!</span>t.all<span class="sc">%in%</span>t]</span>
+<span id="cb1-18"><a href="#cb1-18"></a>nF <span class="ot">&lt;-</span> h <span class="ot">&lt;-</span> <span class="fu">length</span>(tF)</span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="do">## plotting</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="fu">plot</span>(t,y,<span class="at">t=</span><span class="st">"l"</span>);<span class="fu">acf</span>(y)</span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="do">## differencing y</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>y.diff <span class="ot">&lt;-</span> <span class="fu">diff</span>(y)</span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="do">## plotting</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="fu">plot</span>(t[<span class="sc">-</span><span class="dv">1</span>],y.diff,<span class="at">t=</span><span class="st">"l"</span>);<span class="fu">acf</span>(y.diff)</span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="do">## modelling (two RW models)</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">Arima</span>(y,<span class="at">order=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="at">include.drift =</span> F)</span>
+<span id="cb1-31"><a href="#cb1-31"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">Arima</span>(y,<span class="at">order=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="at">include.drift =</span> T)</span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="do">## checking the drift estimate</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>mod2;(y[n]<span class="sc">-</span>y[<span class="dv">1</span>])<span class="sc">/</span>(n<span class="dv">-1</span>)</span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="do">## forecast</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a>y.fore1 <span class="ot">&lt;-</span> <span class="fu">forecast</span>(mod1,<span class="at">h=</span>h)</span>
+<span id="cb1-36"><a href="#cb1-36"></a>y.fore2 <span class="ot">&lt;-</span> <span class="fu">forecast</span>(mod2,<span class="at">h=</span>h)</span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="do">## plotting</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="fu">plot</span>(t,y,<span class="at">t=</span><span class="st">"l"</span>,<span class="at">xlim=</span><span class="fu">range</span>(t.all),<span class="at">ylim=</span><span class="fu">range</span>(y,y.fore2<span class="sc">$</span>lower[,<span class="dv">1</span>]),<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="fu">abline</span>(<span class="at">v=</span>t[n],<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="fu">points</span>(tF,y.all[t.all<span class="sc">%in%</span>tF],<span class="at">cex=</span><span class="fl">0.8</span>)</span>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="do">## adding forecasts (80%PI and median)</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="fu">lines</span>(tF,y.fore1<span class="sc">$</span>upper[,<span class="dv">1</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb1-43"><a href="#cb1-43"></a><span class="fu">lines</span>(tF,y.fore1<span class="sc">$</span>lower[,<span class="dv">1</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb1-44"><a href="#cb1-44"></a><span class="fu">lines</span>(tF,y.fore2<span class="sc">$</span>upper[,<span class="dv">1</span>],<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb1-45"><a href="#cb1-45"></a><span class="fu">lines</span>(tF,y.fore2<span class="sc">$</span>lower[,<span class="dv">1</span>],<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb1-46"><a href="#cb1-46"></a><span class="fu">lines</span>(tF,y.fore1<span class="sc">$</span>mean,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="fu">lines</span>(tF,y.fore2<span class="sc">$</span>mean,<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb1-48"><a href="#cb1-48"></a><span class="fu">legend</span>(<span class="st">"bottomleft"</span>,<span class="fu">c</span>(<span class="st">"RW"</span>,<span class="st">"RW w drift"</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>),<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">title =</span> <span class="st">"Forecast:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="rw-models" class="slide level2">
 <h2>RW models</h2>
@@ -611,20 +681,18 @@ Ugofilippo Basellini
 <img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="autoregressive-processes" class="slide level2 smaller">
 <h2>Autoregressive processes</h2>
+<!-- ::: incremental -->
 <ul>
-<li>A process <span class="math inline">\(Y_t\)</span> is autoregressive of order <span class="math inline">\(p\)</span> (denoted AR(<span class="math inline">\(p\)</span>)) if</li>
-</ul>
-<p><span class="math display">\[ Y_t = c + \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \dots + \phi_p Y_{t-p} + Z_t\]</span> where <span class="math inline">\(Z_t\)</span> is a purely random process and <span class="math inline">\(c\)</span> is a constant</p>
-<ul>
-<li>A multiple regression with lagged values of <span class="math inline">\(Y_t\)</span> as predictors</li>
-<li>Simplest example: first-order case (AR(1)), where <span class="math inline">\(Y_t = c + \phi Y_{t-1} + Z_t\)</span>
+<li><p>A process <span class="math inline">\(Y_t\)</span> is autoregressive of order <span class="math inline">\(p\)</span> (denoted AR(<span class="math inline">\(p\)</span>)) if <span class="math display">\[ Y_t = c + \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \dots + \phi_p Y_{t-p} + Z_t\]</span> where <span class="math inline">\(Z_t\)</span> is a purely random process and <span class="math inline">\(c\)</span> is a constant</p></li>
+<li><p>A multiple regression with lagged values of <span class="math inline">\(Y_t\)</span> as predictors</p></li>
+<li><p>Simplest example: first-order case (AR(1)), where <span class="math inline">\(Y_t = c + \phi Y_{t-1} + Z_t\)</span></p>
 <ul>
 <li>if <span class="math inline">\(c=0\)</span> and <span class="math inline">\(\phi=1\)</span>, then random walk</li>
 <li>if <span class="math inline">\(c\neq0\)</span> and <span class="math inline">\(\phi=1\)</span>, then random walk with drift</li>
 <li>if <span class="math inline">\(|\phi|&gt;1\)</span>, then the series is explosive and non-stationary</li>
 <li>if <span class="math inline">\(|\phi|&lt;1\)</span>, then the process is stationary, with ACF given by <span class="math inline">\(\rho_k=\phi^k\)</span> for <span class="math inline">\(k=0,1,2,\dots\)</span> (<span class="math inline">\(\Rightarrow\)</span> the ACF decreases exponentially)</li>
 </ul></li>
-<li>An useful property of an AR(<span class="math inline">\(p\)</span>) process is that the <em>partial</em> ACF is zero at all lags greater than <span class="math inline">\(p\)</span> <span class="math inline">\(\, \Rightarrow\)</span> useful for model selection</li>
+<li><p>An useful property of an AR(<span class="math inline">\(p\)</span>) process is that the <em>partial</em> ACF is zero at all lags greater than <span class="math inline">\(p\)</span> <span class="math inline">\(\, \Rightarrow\)</span> useful for model selection <!-- :::  --></p></li>
 </ul>
 <div class="footer">
 
@@ -640,18 +708,16 @@ Ugofilippo Basellini
 </section>
 <section id="moving-average-processes" class="slide level2 smaller">
 <h2>Moving average processes</h2>
+<!-- ::: incremental -->
 <ul>
-<li>A process <span class="math inline">\(Y_t\)</span> is moving average of order <span class="math inline">\(q\)</span> (denoted MA(<span class="math inline">\(q\)</span>)) if</li>
-</ul>
-<p><span class="math display">\[ Y_t = c + Z_t + \theta_1 Z_{t-1} + \theta_2 Z_{t-2} + \dots + \theta_q Z_{t-q}\]</span> where <span class="math inline">\(Z_t\)</span> is a purely random process and <span class="math inline">\(c\)</span> is a constant</p>
-<ul>
+<li><p>A process <span class="math inline">\(Y_t\)</span> is moving average of order <span class="math inline">\(q\)</span> (denoted MA(<span class="math inline">\(q\)</span>)) if <span class="math display">\[ Y_t = c + Z_t + \theta_1 Z_{t-1} + \theta_2 Z_{t-2} + \dots + \theta_q Z_{t-q}\]</span> where <span class="math inline">\(Z_t\)</span> is a purely random process and <span class="math inline">\(c\)</span> is a constant</p></li>
 <li><p>A multiple regression with past errors as predictors; finite-order MA process is stationary for any values of <span class="math inline">\(\boldsymbol{\theta}\)</span></p></li>
 <li><p>Simplest example: first-order case (MA(1)), where <span class="math inline">\(Y_t = Z_t + \theta Z_{t-1}\)</span>, is stationary <span class="math inline">\(\forall \theta\)</span> with ACF given by: <span class="math display">\[ \rho_k = \left\{ \begin{array}{cc}
               1  &amp;k = 0 \\
               \theta / \left(1+\theta^2\right)  &amp;k = 1 \\
               0  &amp;k&gt;1
           \end{array} \right. \]</span></p></li>
-<li><p>An useful property of an MA(<span class="math inline">\(q\)</span>) process is that the ACF is zero at all lags greater than <span class="math inline">\(q\)</span> <span class="math inline">\(\, \Rightarrow\)</span> useful for model selection</p></li>
+<li><p>An useful property of an MA(<span class="math inline">\(q\)</span>) process is that the ACF is zero at all lags greater than <span class="math inline">\(q\)</span> <span class="math inline">\(\, \Rightarrow\)</span> useful for model selection <!-- :::  --></p></li>
 </ul>
 <div class="footer">
 
@@ -667,6 +733,7 @@ Ugofilippo Basellini
 </section>
 <section id="arma-arima-processes" class="slide level2 smaller">
 <h2>ARMA &amp; ARIMA processes</h2>
+<!-- ::: incremental -->
 <p>Putting together AR(<span class="math inline">\(p\)</span>) and MA(<span class="math inline">\(q\)</span>), a process <span class="math inline">\(Y_t\)</span> is autoregressive moving average (denoted ARMA(<span class="math inline">\(p\)</span>,<span class="math inline">\(q\)</span>)) if <span class="math display">\[ Y_t = c + \phi_1 Y_{t-1} + \dots + \phi_p Y_{t-p} + Z_t + \theta_1 Z_{t-1} + \dots + \theta_q Z_{t-q}\]</span> where <span class="math inline">\(Z_t\)</span> is a purely random process and <span class="math inline">\(c\)</span> is a constant</p>
 <ul>
 <li>Moreover, most time-series are not stationary, and we cannot apply stationary AR, MA or ARMA processes <span class="math inline">\(\, \Rightarrow\)</span> ARIMA(<span class="math inline">\(p,d,q\)</span>) models combine ARMA with <strong>differencing</strong> of order <span class="math inline">\(d\)</span>, employed to make series stationary</li>
@@ -675,7 +742,7 @@ Ugofilippo Basellini
 <li>purely random process: ARIMA(0,0,0)</li>
 <li>random walk: ARIMA(0,1,0) without constant</li>
 <li>random walk with drift: ARIMA(0,1,0) with constant</li>
-<li>AR(<span class="math inline">\(p\)</span>): ARIMA(<span class="math inline">\(p\)</span>,0,0); MA(<span class="math inline">\(q\)</span>): ARIMA(0,0,<span class="math inline">\(q\)</span>)</li>
+<li>AR(<span class="math inline">\(p\)</span>): ARIMA(<span class="math inline">\(p\)</span>,0,0); MA(<span class="math inline">\(q\)</span>): ARIMA(0,0,<span class="math inline">\(q\)</span>) <!-- :::  --></li>
 </ul></li>
 </ul>
 <div class="footer">
@@ -684,15 +751,19 @@ Ugofilippo Basellini
 </section>
 <section id="modelling-procedure-with-arima" class="slide level2 smaller">
 <h2>Modelling procedure with ARIMA</h2>
+<!-- ::: incremental -->
 <ol type="1">
 <li>Plot the data and identify unusual observations</li>
 <li>If necessary, transform the data to stabilize the variance</li>
 <li>If data non-stationary: take first-order differences until data are stationary</li>
 <li>Examine ACF/PACF: is an AR(<span class="math inline">\(p\)</span>) or MA(<span class="math inline">\(q\)</span>) model appropriate?</li>
-<li>Try chosen model(s) and employ AICc to search for a better one 6 Check residuals of the model <span class="math inline">\(\, \Rightarrow\)</span> they should look like a purely random process</li>
+<li>Try chosen model(s) and employ AICc to search for a better one</li>
+<li>Check residuals of the model <span class="math inline">\(\, \Rightarrow\)</span> they should look like a purely random process</li>
 <li>Forecast</li>
 </ol>
-<p>Interpreting the ACF/PACF can be very challenging, and not suitable for ARMA processes <span class="math inline">\(\Rightarrow\)</span> points 3–5 with <code>auto.arima</code> function from <code>forecast</code> package</p>
+<ul>
+<li>Interpreting the ACF/PACF can be very challenging, and not suitable for ARMA processes <span class="math inline">\(\Rightarrow\)</span> points 3–5 with <code>auto.arima</code> function from <code>forecast</code> package <!-- :::  --></li>
+</ul>
 </section>
 <section id="exercise-1" class="slide level2">
 <h2>Exercise</h2>
@@ -714,65 +785,63 @@ Ugofilippo Basellini
 </section>
 <section id="one-possible-solution-1" class="slide level2 smaller">
 <h2>One possible solution</h2>
-<!-- ``` r -->
-<!-- ## cleaning the workspace -->
-<!-- rm(list=ls(all=TRUE)) -->
-<!-- ## loading the data -->
-<!-- setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) -->
-<!-- load("data/FertSWE.Rdata") -->
-<!-- ## subset  -->
-<!-- my.df <- FERT.SWE %>% filter(Year>=1950, Age == 20) -->
-<!-- ## data -->
-<!-- x <- my.df$Year -->
-<!-- y <- my.df$Births -->
-<!-- e <- my.df$Exposures -->
-<!-- f <- y/e;  -->
-<!-- lf <- log(f) -->
-<!-- n <- length(x) -->
-<!-- plot(x,lf) -->
-<!-- ## forecast horizon -->
-<!-- tF <- x[1]:2050 -->
-<!-- nF <- length(tF) -->
-<!-- xF <- (x[n]+1):2050 -->
-<!-- h <- length(xF) -->
-<!-- ## 1) fit Poisson glm to births -->
-<!-- glm1 <- glm(y~x,offset = log(e),family=poisson()) -->
-<!-- ## linear combination of betas -->
-<!-- X <- cbind(1,tF) -->
-<!-- eta.hat <- X%*%coef(glm1) -->
-<!-- ## var-covar matrix -->
-<!-- V <- vcov(glm1) -->
-<!-- ## computing standard errors -->
-<!-- se.eta <- sqrt(diag(X%*%V%*%t(X))) -->
-<!-- ## upper and lower 95% CI -->
-<!-- eta.hat.low <- eta.hat - 2*se.eta -->
-<!-- eta.hat.up <- eta.hat + 2*se.eta -->
-<!-- ## 2) Time-series models -->
-<!-- mod1 <- Arima(lf,order = c(0,1,0),include.drift = T) -->
-<!-- mod2 <- auto.arima(lf) -->
-<!-- ## forecast -->
-<!-- lf.fore1 <- forecast(mod1,h=h) -->
-<!-- lf.fore2 <- forecast(mod2,h=h) -->
-<!-- plot(lf.fore1) -->
-<!-- plot(lf.fore2) -->
-<!-- ## plotting -->
-<!-- plot(x,lf,ylim=range(lf,eta.hat.low,lf.fore1$lower,lf.fore2$lower),xlim=range(tF)) -->
-<!-- ## GLM -->
-<!-- lines(tF,eta.hat,col=4,lwd=2) -->
-<!-- lines(tF,eta.hat.low,col=4,lwd=2,lty=2) -->
-<!-- lines(tF,eta.hat.up,col=4,lwd=2,lty=2) -->
-<!-- ## RWD -->
-<!-- lines(x,fitted(mod1),col=2,lwd=2) -->
-<!-- lines(xF,lf.fore1$mean,col=2,lwd=2) -->
-<!-- lines(xF,lf.fore1$upper[,2],col=2,lwd=2,lty=2) -->
-<!-- lines(xF,lf.fore1$lower[,2],col=2,lwd=2,lty=2) -->
-<!-- ## ARIMA(1,1,0) with drift -->
-<!-- lines(x,fitted(mod2),col=3,lwd=2) -->
-<!-- lines(xF,lf.fore2$mean,col=3,lwd=2) -->
-<!-- lines(xF,lf.fore2$upper[,2],col=3,lwd=2,lty=2) -->
-<!-- lines(xF,lf.fore2$lowe[,2],col=3,lwd=2,lty=2) -->
-<!-- legend("bottomleft",c("GLM","RWD","ARIMA(1,1,0)+drift"),col=c(4,2,3),lwd=2,title = "Forecast:") -->
-<!-- ``` -->
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="do">## cleaning the workspace</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>(<span class="at">all=</span><span class="cn">TRUE</span>))</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="do">## loading the data</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">setwd</span>(<span class="fu">dirname</span>(rstudioapi<span class="sc">::</span><span class="fu">getActiveDocumentContext</span>()<span class="sc">$</span>path))</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">load</span>(<span class="st">"data/FertSWE.Rdata"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="do">## subset</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>my.df <span class="ot">&lt;-</span> FERT.SWE <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year<span class="sc">&gt;=</span><span class="dv">1950</span>, Age <span class="sc">==</span> <span class="dv">20</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="do">## data</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>x <span class="ot">&lt;-</span> my.df<span class="sc">$</span>Year</span>
+<span id="cb2-10"><a href="#cb2-10"></a>y <span class="ot">&lt;-</span> my.df<span class="sc">$</span>Births</span>
+<span id="cb2-11"><a href="#cb2-11"></a>e <span class="ot">&lt;-</span> my.df<span class="sc">$</span>Exposures</span>
+<span id="cb2-12"><a href="#cb2-12"></a>f <span class="ot">&lt;-</span> y<span class="sc">/</span>e;</span>
+<span id="cb2-13"><a href="#cb2-13"></a>lf <span class="ot">&lt;-</span> <span class="fu">log</span>(f)</span>
+<span id="cb2-14"><a href="#cb2-14"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="fu">plot</span>(x,lf)</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="do">## forecast horizon</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>tF <span class="ot">&lt;-</span> x[<span class="dv">1</span>]<span class="sc">:</span><span class="dv">2050</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>nF <span class="ot">&lt;-</span> <span class="fu">length</span>(tF)</span>
+<span id="cb2-19"><a href="#cb2-19"></a>xF <span class="ot">&lt;-</span> (x[n]<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="dv">2050</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>h <span class="ot">&lt;-</span> <span class="fu">length</span>(xF)</span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="do">## 1) fit Poisson glm to births</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>glm1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y<span class="sc">~</span>x,<span class="at">offset =</span> <span class="fu">log</span>(e),<span class="at">family=</span><span class="fu">poisson</span>())</span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="do">## linear combination of betas</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>,tF)</span>
+<span id="cb2-25"><a href="#cb2-25"></a>eta.hat <span class="ot">&lt;-</span> X<span class="sc">%*%</span><span class="fu">coef</span>(glm1)</span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="do">## var-covar matrix</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a>V <span class="ot">&lt;-</span> <span class="fu">vcov</span>(glm1)</span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="do">## computing standard errors</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a>se.eta <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">diag</span>(X<span class="sc">%*%</span>V<span class="sc">%*%</span><span class="fu">t</span>(X)))</span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="do">## upper and lower 95% CI</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a>eta.hat.low <span class="ot">&lt;-</span> eta.hat <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>se.eta</span>
+<span id="cb2-32"><a href="#cb2-32"></a>eta.hat.up <span class="ot">&lt;-</span> eta.hat <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>se.eta</span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="do">## 2) Time-series models</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">Arima</span>(lf,<span class="at">order =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="at">include.drift =</span> T)</span>
+<span id="cb2-35"><a href="#cb2-35"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">auto.arima</span>(lf)</span>
+<span id="cb2-36"><a href="#cb2-36"></a><span class="do">## forecast</span></span>
+<span id="cb2-37"><a href="#cb2-37"></a>lf.fore1 <span class="ot">&lt;-</span> <span class="fu">forecast</span>(mod1,<span class="at">h=</span>h)</span>
+<span id="cb2-38"><a href="#cb2-38"></a>lf.fore2 <span class="ot">&lt;-</span> <span class="fu">forecast</span>(mod2,<span class="at">h=</span>h)</span>
+<span id="cb2-39"><a href="#cb2-39"></a><span class="fu">plot</span>(lf.fore1)</span>
+<span id="cb2-40"><a href="#cb2-40"></a><span class="fu">plot</span>(lf.fore2)</span>
+<span id="cb2-41"><a href="#cb2-41"></a><span class="do">## plotting</span></span>
+<span id="cb2-42"><a href="#cb2-42"></a><span class="fu">plot</span>(x,lf,<span class="at">ylim=</span><span class="fu">range</span>(lf,eta.hat.low,lf.fore1<span class="sc">$</span>lower,lf.fore2<span class="sc">$</span>lower),<span class="at">xlim=</span><span class="fu">range</span>(tF))</span>
+<span id="cb2-43"><a href="#cb2-43"></a><span class="do">## GLM</span></span>
+<span id="cb2-44"><a href="#cb2-44"></a><span class="fu">lines</span>(tF,eta.hat,<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb2-45"><a href="#cb2-45"></a><span class="fu">lines</span>(tF,eta.hat.low,<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb2-46"><a href="#cb2-46"></a><span class="fu">lines</span>(tF,eta.hat.up,<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb2-47"><a href="#cb2-47"></a><span class="do">## RWD</span></span>
+<span id="cb2-48"><a href="#cb2-48"></a><span class="fu">lines</span>(x,<span class="fu">fitted</span>(mod1),<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb2-49"><a href="#cb2-49"></a><span class="fu">lines</span>(xF,lf.fore1<span class="sc">$</span>mean,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb2-50"><a href="#cb2-50"></a><span class="fu">lines</span>(xF,lf.fore1<span class="sc">$</span>upper[,<span class="dv">2</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb2-51"><a href="#cb2-51"></a><span class="fu">lines</span>(xF,lf.fore1<span class="sc">$</span>lower[,<span class="dv">2</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb2-52"><a href="#cb2-52"></a><span class="do">## ARIMA(1,1,0) with drift</span></span>
+<span id="cb2-53"><a href="#cb2-53"></a><span class="fu">lines</span>(x,<span class="fu">fitted</span>(mod2),<span class="at">col=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb2-54"><a href="#cb2-54"></a><span class="fu">lines</span>(xF,lf.fore2<span class="sc">$</span>mean,<span class="at">col=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb2-55"><a href="#cb2-55"></a><span class="fu">lines</span>(xF,lf.fore2<span class="sc">$</span>upper[,<span class="dv">2</span>],<span class="at">col=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb2-56"><a href="#cb2-56"></a><span class="fu">lines</span>(xF,lf.fore2<span class="sc">$</span>lowe[,<span class="dv">2</span>],<span class="at">col=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb2-57"><a href="#cb2-57"></a><span class="fu">legend</span>(<span class="st">"bottomleft"</span>,<span class="fu">c</span>(<span class="st">"GLM"</span>,<span class="st">"RWD"</span>,<span class="st">"ARIMA(1,1,0)+drift"</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">title =</span> <span class="st">"Forecast:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ts-vs-glm" class="slide level2">
 <h2>TS vs GLM</h2>
@@ -781,21 +850,24 @@ Ugofilippo Basellini
 <section id="forecasting-with-time-series-methods" class="slide level2">
 <h2>Forecasting with time-series methods</h2>
 <p>Advantages:</p>
+<!-- ::: incremental -->
 <ul>
-<li>much better goodness-of-fit</li>
-<li>almost absent jump-off bias</li>
-<li>wider prediction intervals</li>
+<li><p>much better goodness-of-fit</p></li>
+<li><p>almost absent jump-off bias</p></li>
+<li><p>wider prediction intervals</p></li>
+<li><p>What about summary measures? Can we try to incorporate uncertainty from <span class="math inline">\(m\)</span> different models together? <!-- :::  --></p></li>
 </ul>
-<p>What about summary measures? Can we try to incorporate uncertainty from <span class="math inline">\(m\)</span> different models together?</p>
 </section>
 <section id="arima-pis" class="slide level2">
 <h2>ARIMA PIs</h2>
+<!-- ::: incremental -->
 <ul>
-<li>The computation of ARIMA prediciton intervals is rather complex (and beyond the scope of this course)</li>
-<li>A simple example: if <span class="math inline">\(\hat{\sigma}\)</span> is the standard deviation of the residuals, then for any ARIMA model, the 95% PI for the first point forecast is given by <span class="math inline">\(\hat{y}_{T+1|T} \pm 1.96\hat{\sigma}\)</span></li>
-<li>Advantage: in addition to theoretical PIs, we can simulate future paths of the time-series based on the estimated model</li>
+<li><p>The computation of ARIMA prediciton intervals is rather complex (and beyond the scope of this course)</p></li>
+<li><p>A simple example: if <span class="math inline">\(\hat{\sigma}\)</span> is the standard deviation of the residuals, then for any ARIMA model, the 95% PI for the first point forecast is given by <span class="math inline">\(\hat{y}_{T+1|T} \pm 1.96\hat{\sigma}\)</span></p></li>
+<li><p>Advantage: in addition to theoretical PIs, we can simulate future paths of the time-series based on the estimated model</p></li>
+<li><p><span class="math inline">\(\Rightarrow\)</span> we can combine simulations from the different models in a bootstrapping framework<br>
+<!-- :::  --></p></li>
 </ul>
-<p><span class="math inline">\(\Rightarrow\)</span> we can combine simulations from the different models in a bootstrapping framework</p>
 </section>
 <section id="exercise-2" class="slide level2">
 <h2>Exercise</h2>
@@ -813,42 +885,40 @@ Ugofilippo Basellini
 </section>
 <section id="one-possible-solution-2" class="slide level2 smaller">
 <h2>One possible solution</h2>
-<!-- ``` r -->
-<!-- ## computing simulated future paths -->
-<!-- ## number of simulations -->
-<!-- nS <- 100    ## increase for improved precision -->
-<!-- set.seed(1)  ## for reproducibility -->
-<!-- ## object to store simulations -->
-<!-- LFsim <- matrix(NA,h,nS) -->
-<!-- for (s in 1:nS){ -->
-<!--   lf.fore.sim <- simulate(mod2, nsim=h, -->
-<!--                           future=TRUE, bootstrap=TRUE) -->
-<!--   ## plotting one simulation -->
-<!--   # plot(x,lf,ylim=range(lf,lf.fore.sim),xlim=range(tF)) -->
-<!--   # lines(xF,lf.fore.sim) -->
-<!--   ## saving -->
-<!--   LFsim[,s] <- lf.fore.sim -->
-<!-- } -->
-<!-- ## plotting all simulations -->
-<!-- plot(x,lf,ylim=range(lf,LFsim),xlim=range(tF)) -->
-<!-- matlines(xF,LFsim,col="grey80",lty=1) -->
-<!-- ## deriving median and 95% PI -->
-<!-- lev <- 95; lev.p <- lev/100 -->
-<!-- lf.fore.med <- apply(LFsim,1,median) -->
-<!-- lf.fore.low <- apply(LFsim,1,quantile,prob=(1-lev.p)/2) -->
-<!-- lf.fore.up <- apply(LFsim,1,quantile,prob=1-(1-lev.p)/2) -->
-<!-- ## comparing PIs -->
-<!-- plot(x,lf,ylim=range(lf,lf.fore2$lower,lf.fore.low),xlim=range(tF)) -->
-<!-- ## analytical -->
-<!-- lines(xF,lf.fore2$mean,col=3,lwd=2) -->
-<!-- lines(xF,lf.fore2$upper[,2],col=3,lwd=2,lty=2) -->
-<!-- lines(xF,lf.fore2$lower[,2],col=3,lwd=2,lty=2) -->
-<!-- ## simulations -->
-<!-- lines(xF,lf.fore.med,col=4,lwd=2) -->
-<!-- lines(xF,lf.fore.up,col=4,lwd=2,lty=2) -->
-<!-- lines(xF,lf.fore.low,col=4,lwd=2,lty=2) -->
-<!-- legend("bottomleft",c("analytical","simulations"),col=c(3,4),lwd=2) -->
-<!-- ``` -->
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="do">## computing simulated future paths</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="do">## number of simulations</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>nS <span class="ot">&lt;-</span> <span class="dv">100</span>    <span class="do">## increase for improved precision</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)  <span class="do">## for reproducibility</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="do">## object to store simulations</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>LFsim <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>,h,nS)</span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="cf">for</span> (s <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nS){</span>
+<span id="cb3-8"><a href="#cb3-8"></a>  lf.fore.sim <span class="ot">&lt;-</span> <span class="fu">simulate</span>(mod2, <span class="at">nsim=</span>h,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>                          <span class="at">future=</span><span class="cn">TRUE</span>, <span class="at">bootstrap=</span><span class="cn">TRUE</span>)</span>
+<span id="cb3-10"><a href="#cb3-10"></a>  <span class="do">## plotting one simulation</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>  <span class="co"># plot(x,lf,ylim=range(lf,lf.fore.sim),xlim=range(tF))</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>  <span class="co"># lines(xF,lf.fore.sim)</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>  <span class="do">## saving</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>  LFsim[,s] <span class="ot">&lt;-</span> lf.fore.sim</span>
+<span id="cb3-15"><a href="#cb3-15"></a>}</span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="do">## plotting all simulations</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="fu">plot</span>(x,lf,<span class="at">ylim=</span><span class="fu">range</span>(lf,LFsim),<span class="at">xlim=</span><span class="fu">range</span>(tF))</span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="fu">matlines</span>(xF,LFsim,<span class="at">col=</span><span class="st">"grey80"</span>,<span class="at">lty=</span><span class="dv">1</span>)</span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="do">## deriving median and 95% PI</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>lev <span class="ot">&lt;-</span> <span class="dv">95</span>; lev.p <span class="ot">&lt;-</span> lev<span class="sc">/</span><span class="dv">100</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a>lf.fore.med <span class="ot">&lt;-</span> <span class="fu">apply</span>(LFsim,<span class="dv">1</span>,median)</span>
+<span id="cb3-22"><a href="#cb3-22"></a>lf.fore.low <span class="ot">&lt;-</span> <span class="fu">apply</span>(LFsim,<span class="dv">1</span>,quantile,<span class="at">prob=</span>(<span class="dv">1</span><span class="sc">-</span>lev.p)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb3-23"><a href="#cb3-23"></a>lf.fore.up <span class="ot">&lt;-</span> <span class="fu">apply</span>(LFsim,<span class="dv">1</span>,quantile,<span class="at">prob=</span><span class="dv">1</span><span class="sc">-</span>(<span class="dv">1</span><span class="sc">-</span>lev.p)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb3-24"><a href="#cb3-24"></a><span class="do">## comparing PIs</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="fu">plot</span>(x,lf,<span class="at">ylim=</span><span class="fu">range</span>(lf,lf.fore2<span class="sc">$</span>lower,lf.fore.low),<span class="at">xlim=</span><span class="fu">range</span>(tF))</span>
+<span id="cb3-26"><a href="#cb3-26"></a><span class="do">## analytical</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="fu">lines</span>(xF,lf.fore2<span class="sc">$</span>mean,<span class="at">col=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb3-28"><a href="#cb3-28"></a><span class="fu">lines</span>(xF,lf.fore2<span class="sc">$</span>upper[,<span class="dv">2</span>],<span class="at">col=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="fu">lines</span>(xF,lf.fore2<span class="sc">$</span>lower[,<span class="dv">2</span>],<span class="at">col=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="do">## simulations</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a><span class="fu">lines</span>(xF,lf.fore.med,<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb3-32"><a href="#cb3-32"></a><span class="fu">lines</span>(xF,lf.fore.up,<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb3-33"><a href="#cb3-33"></a><span class="fu">lines</span>(xF,lf.fore.low,<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb3-34"><a href="#cb3-34"></a><span class="fu">legend</span>(<span class="st">"bottomleft"</span>,<span class="fu">c</span>(<span class="st">"analytical"</span>,<span class="st">"simulations"</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="arima-simulations" class="slide level2">
 <h2>ARIMA simulations</h2>
@@ -880,16 +950,19 @@ Ugofilippo Basellini
 <img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
 <section id="forecasting-with-time-series-methods-1" class="slide level2">
 <h2>Forecasting with time-series methods</h2>
-<p>Advantages:</p>
+<!-- ::: incremental -->
+<ul>
+<li>Advantages:
 <ul>
 <li>much better goodness-of-fit</li>
 <li>almost absent jump-off bias</li>
 <li>larger prediction intervals</li>
-</ul>
-<p>Disadvantages:</p>
+</ul></li>
+<li>Disadvantages:
 <ul>
 <li>strange wiggling behaviour over ages</li>
-<li>too large prediction intervals?</li>
+<li>too large prediction intervals? <!-- :::  --></li>
+</ul></li>
 </ul>
 </section>
 <section id="day-2-assignment" class="slide level2">
